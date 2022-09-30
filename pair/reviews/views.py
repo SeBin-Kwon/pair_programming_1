@@ -16,8 +16,14 @@ def create(request):
     Review.objects.create(title=title, content=content)
     context = {"title": title, "content": content}
 
-    return redirect("reviews:index")
+    return redirect("reviews:detail")
 
 
 def new(request):
     return render(request, "reviews/new.html")
+
+
+def detail(request, pk):
+    review = Review.objects.get(pk=pk)
+    context = {"review": review}
+    return render(request, "reviews/detail.html", context)
