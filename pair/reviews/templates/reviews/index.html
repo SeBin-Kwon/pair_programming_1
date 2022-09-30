@@ -1,13 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content%}
-<h1>index.html</h1>
-<a href="{% url 'reviews:new' %}">글 작성하기</a>
-<ul>
-  {% for r in review %}
-  <li>
-    {{ r.title }}
-  </li>
-  {% endfor %}
-</ul>
+<div class="container mt-5 grid">
+  <div class="row">
+    <div class="col-12 col-lg-2">
+      <h1 class="fw-light">Movie<br>Review</h1>
+    </div>
+
+    <div class="col-12 col-lg-10">
+        <div class="text-end mb-4">
+          <a href="{% url 'reviews:new' %}" class="btn btn-primary">글 작성하기</a>
+        </div>
+
+      <table class="table">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">번호</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성 시간</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in review %}
+          <tr>
+            <th scope="row">{{ r.id }}</th>
+            <td><a class="text-black text-decoration-none" href="{% url 'reviews:detail' r.pk %}">{{ r.title }}</a></td>
+            <td>{{ r.created_at }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 {% endblock %}

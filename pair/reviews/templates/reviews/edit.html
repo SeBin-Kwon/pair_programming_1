@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<div class="container">
+<h1 class="fw-light mt-5">Edit</h1>
+<form action="{% url 'reviews:update' review.pk %}">
+  <div class="mt-3">
+  <label for="exampleFormControlInput1" class="form-label">제목</label>
+  <input class="form-control" type="text" id="exampleFormControlInput1" name=title value="{{ review.title }}">
+  </div>
+  <div class="mt-3">
+  <label for="exampleFormControlInput2" class="form-label">내용</label>
+  <input class="form-control" type="text" id="exampleFormControlInput2" name=content value="{{ review.content }}">
+</div>
+  <input class="btn btn-primary mt-4" type="submit">
+</form>
+</div>
+{% endblock %}
