@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<h1>new.html</h1>
+<form action="{% url 'reviews:create' %}">
+  제목
+  <input type="text" name=title>
+  내용
+  <input type="text" name=content>
+  <input type="submit">
+</form>
+{% endblock %}
